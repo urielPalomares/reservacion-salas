@@ -36,7 +36,7 @@ body {
 }
 
 .container {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -106,7 +106,7 @@ button:disabled {
 /* Lista de reservas */
 .reservations-list {
   background: white;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -121,6 +121,7 @@ button:disabled {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  table-layout: auto;
 }
 
 .reservations-list th,
@@ -128,12 +129,15 @@ button:disabled {
   padding: 0.75rem;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  font-size: small;
 }
 
 .reservations-list th {
   background-color: #f8f9fa;
   font-weight: 600;
   color: #2c3e50;
+  font-size: small;
 }
 
 .reservations-list tr:hover {
@@ -212,21 +216,13 @@ button:disabled {
   .container {
     grid-template-columns: 1fr;
   }
-  
+
   .App-main {
     padding: 1rem;
   }
-  
+
   .reservation-form,
   .reservations-list {
     padding: 1rem;
-  }
-  
-  .reservations-list {
-    overflow-x: auto;
-  }
-  
-  .reservations-list table {
-    min-width: 600px;
   }
 }
