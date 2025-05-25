@@ -28,6 +28,8 @@ const ReservationsList = ({ reservations }) => {
           <tr>
             <th>Inicio</th>
             <th>Fin</th>
+            <th>Inicio UTC</th>
+            <th>Fin UTC</th>
             <th>Prioridad</th>
             <th>Proyector</th>
             <th>Capacidad</th>
@@ -39,6 +41,8 @@ const ReservationsList = ({ reservations }) => {
             <tr key={reservation.id} className={`priority-${reservation.priority}`}>
               <td>{formatForDisplay(reservation.startTime, reservation.timezone)}</td>
               <td>{formatForDisplay(reservation.endTime, reservation.timezone)}</td>
+              <td>{reservation.startTimeUTC}</td>
+              <td>{reservation.endTimeUTC}</td>
               <td>
                 <span className={`priority-badge ${reservation.priority}`}>
                   {reservation.priority === 'high' ? 'Alta' : 'Normal'}
