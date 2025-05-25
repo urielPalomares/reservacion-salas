@@ -1,38 +1,232 @@
+/* Estilos básicos - Enfoque en funcionalidad */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Header */
+.App-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Main content */
+.App-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+/* Formulario */
+.reservation-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reservation-form h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input[type="datetime-local"],
+.form-group input[type="number"],
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* Lista de reservas */
+.reservations-list {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reservations-list h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.reservations-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.reservations-list th,
+.reservations-list td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.reservations-list th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.reservations-list tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Badges de prioridad */
+.priority-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.priority-badge.normal {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.priority-badge.high {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+/* Mensajes de error */
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid #fcc;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+/* Mensaje de conflicto */
+.conflict-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 1000;
 }
 
-.App-link {
-  color: #61dafb;
+.conflict-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.conflict-content h3 {
+  margin-top: 0;
+  color: #e74c3c;
+}
+
+.conflict-content button {
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .App-main {
+    padding: 1rem;
+  }
+  
+  .reservation-form,
+  .reservations-list {
+    padding: 1rem;
+  }
+  
+  .reservations-list {
+    overflow-x: auto;
+  }
+  
+  .reservations-list table {
+    min-width: 600px;
   }
 }
